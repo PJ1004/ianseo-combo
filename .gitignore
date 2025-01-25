@@ -1,0 +1,5 @@
+## Ignore local gitconfig
+**.gitconfig
+
+## Ignore any ZIP archives
+**.zip
