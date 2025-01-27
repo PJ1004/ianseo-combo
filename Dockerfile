@@ -21,6 +21,7 @@ RUN apt update && apt install -y php8.4 \
         php8.4-fpm \
         php8.4-gd \
         php8.4-intl \
+        php8.4-imagick \
         php8.4-mysql \
         libapache2-mod-php8.4 \
         php8.4-mbstring \
@@ -33,7 +34,8 @@ RUN apt update && apt install -y php8.4 \
         libmagickwand-dev
 
 # Install additional IANSEO php plugins
-RUN printf "\n"|pecl install imagick
+# Commenting out pecl install as ppa:ondrej now supports imagick on php8.4
+# RUN printf "\n"|pecl install imagick
 
 # Enable the PHP module and restart Apache
 RUN a2enmod php8.4
