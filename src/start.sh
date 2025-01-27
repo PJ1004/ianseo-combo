@@ -27,4 +27,4 @@ if [ -z "$MARIADB_PASSWORD" ]; then
   export MARIADB_PASSWORD="ianseo"
 fi
 
-exec /usr/bin/supervisord
+exec /usr/bin/supervisord -c /etc/supervisor/supervisord.conf

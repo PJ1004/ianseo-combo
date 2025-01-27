@@ -5,13 +5,13 @@
 
 ### Info:
  - Author - PJ1004
- - Version - 2.1
- - Last Modified - 26-Jan-2025
+ - Version - 2.2
+ - Last Modified - 27-Jan-2025
 
 
 ### Context:
  - Database - MariaDB:11
- - Apache Webserver - PHP 8.2
+ - Apache Webserver - PHP 8.4
  - IANSEO - 20241208
 
 ## Docker RUN
@@ -19,7 +19,7 @@
 Pull the combined ianseo php and mariadb database docker image and run as follows:
 
 ```
-docker run -dt -p 80:80 -p 3306:3306 --env-file ./.env --name ianseo pj1004/ianseo-combo:latest
+docker run -dt -p 80:80 -p 3306:3306 [--env-file ./.env] --name ianseo pj1004/ianseo-combo:latest
 ```
 
 ### Architectures
@@ -63,3 +63,10 @@ MARIADB_DATABASE=ianseo
 MARIADB_USER=ianseo
 MARIADB_PASSWORD=ianseo
 ```
+
+
+### First Run:
+When connecting to the database on the IANSEO first-run screen, just enter `localhost` in the write server Host field.  The root password is not required as a blank 'ianseo' database is created at first-time startup along with the 'ianseo' user.
+
+Refer to the .env file if you wish to change the password or database settings before first run.
+If you want to retain your customisations in the .env file for future versions, add ".env" to your ".gitignore" file

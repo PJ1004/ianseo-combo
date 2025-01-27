@@ -1,5 +1,5 @@
 ### Base image from mariadb and based on Ubuntu before adding PHP
-FROM docker.io/mariadb:11-jammy
+FROM docker.io/mariadb:11-noble
 
 ### add php and apache requirements
 ENV DEBIAN_FRONTEND=noninteractive
@@ -16,18 +16,18 @@ RUN apt update && apt install -y \
         unzip
 RUN apt install -y apache2
 RUN add-apt-repository ppa:ondrej/php -y
-RUN apt install -y php8.2 \
-        php8.2-cli \
-        php8.2-fpm \
-        php8.2-gd \
-        php8.2-intl \
-        php8.2-mysql \
-        libapache2-mod-php8.2 \
-        php8.2-mbstring \
-        php8.2-xml \
-        php8.2-curl \
-        php8.2-zip \
-        php8.2-dev \
+RUN apt update && apt install -y php8.4 \
+        php8.4-cli \
+        php8.4-fpm \
+        php8.4-gd \
+        php8.4-intl \
+        php8.4-mysql \
+        libapache2-mod-php8.4 \
+        php8.4-mbstring \
+        php8.4-xml \
+        php8.4-curl \
+        php8.4-zip \
+        php8.4-dev \
         php-pear \
         pkg-config \
         libmagickwand-dev
@@ -36,18 +36,18 @@ RUN apt install -y php8.2 \
 RUN printf "\n"|pecl install imagick
 
 # Enable the PHP module and restart Apache
-RUN a2enmod php8.2
+RUN a2enmod php8.4
 RUN service apache2 restart
 
 # Optional PHP INFO to be used for checking settings (Comment out COPY if not needed)
 COPY --chown=www-data:www-data ./src/info.php /var/www/html/info.php
 # Configure PHP settings
-ENV PHP_CONF=/etc/php/8.2/apache2/php.ini
-RUN cp /usr/lib/php/8.2/php.ini-production $PHP_CONF
+ENV PHP_CONF=/etc/php/8.4/apache2/php.ini
+RUN cp /usr/lib/php/8.4/php.ini-production $PHP_CONF
 RUN sed -i 's/upload_max_filesize = 2M/upload_max_filesize = 16M/g' $PHP_CONF
 RUN sed -i 's/max_execution_time = 30/max_execution_time = 120/g' $PHP_CONF
 RUN sed -i 's/post_max_size = 8M/post_max_size = 16M/g' $PHP_CONF
-RUN sed -i 's/;extension=imap/extension=imagick\n;extension=imap/g' $PHP_CONF
+RUN sed -i 's/;extension=intl/extension=imagick\n;extension=intl/g' $PHP_CONF
 
 # Config for default apache website
 COPY ./src/apache_default /etc/apache2/sites-available/000-default.conf
