@@ -5,21 +5,21 @@
 
 ### Info:
  - Author - PJ1004
- - Version - 2.2
- - Last Modified - 27-Jan-2025
+ - Version - 2.3
+ - Last Modified - 17-Dec-2025
 
 
 ### Context:
- - Database - MariaDB:11
- - Apache Webserver - PHP 8.4
- - IANSEO - 20241208
+ - Database - MariaDB:12
+ - Apache Webserver - PHP 8.5
+ - Ianseo - 20250210
 
 ## Docker RUN
 
 Pull the combined ianseo php and mariadb database docker image and run as follows:
 
 ```
-docker run -dt -p 80:80 -p 3306:3306 [--env-file ./.env] --name ianseo pj1004/ianseo-combo:latest
+docker run -dt -p 80:80 [-p 3306:3306] [--env-file ./.env] --name ianseo pj1004/ianseo-combo:latest
 ```
 
 ### Architectures
