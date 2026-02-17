@@ -1,6 +1,6 @@
 # pj1004/ianseo-combo - docker build
 
-## Combined Docker Build for World Archery IANSEO System and Database
+## Combined Docker Build for the Ianseo System and Database, as used by World Archery
 
 
 ### Info:
@@ -56,7 +56,7 @@ MARIADB_ROOT_PASSWORD=
 
 ### MariaDB - Default DB
 
-Initialise a database for use with IANSEO:
+Initialise a database for use with Ianseo:
 
 ```
 MARIADB_DATABASE=ianseo
@@ -66,7 +66,7 @@ MARIADB_PASSWORD=ianseo
 
 
 ### First Run:
-When connecting to the database on the IANSEO first-run screen, just enter `localhost` in the write server Host field.  The root password is not required as a blank 'ianseo' database is created at first-time startup along with the 'ianseo' user.
+When connecting to the database on the Ianseo first-run screen, just enter `localhost` in the write server Host field.  The root password is not required as a blank 'ianseo' database is created at first-time startup along with the 'ianseo' user.
 
 Refer to the .env file if you wish to change the password or database settings before first run.
 If you want to retain your customisations in the .env file for future versions, add ".env" to your ".gitignore" file
